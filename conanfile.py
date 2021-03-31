@@ -92,6 +92,12 @@ class LibFlannConan(ConanFile):
         # OpenMP support can be added later if needed
         self._cmake.definitions["USE_OPENMP"] = False
 
+
+        self._cmake.definitions["CMAKE_INSTALL_RPATH"] = os.path.join(self.package_folder, "lib")
+        self._cmake.definitions["CMAKE_INSTALL_RPATH_USE_LINK_PATH"] = True
+        self._cmake.definitions["CMAKE_BUILD_WITH_INSTALL_RPATH"] = False
+        self._cmake.definitions["CMAKE_SKIP_BUILD_RPATH"] = False
+
         self._cmake.configure(build_folder=self._build_subfolder, source_folder=self._source_subfolder)
         return self._cmake
 
