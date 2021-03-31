@@ -47,8 +47,8 @@ class LibFlannConan(ConanFile):
     def requirements(self):
         if self.version != "1.8.4":
             self.requires("lz4/1.9.2")
-            if self.options.with_hdf5:
-                self.requires("hdf5/1.12.0")
+        if self.options.with_hdf5:
+            self.requires("hdf5/1.12.0")
 
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])
